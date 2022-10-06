@@ -4,6 +4,8 @@ const router = express.Router();
 const { body, validationResult } = require('express-validator');
 const bcrypt = require('bcrypt');
 var jwt = require('jsonwebtoken');
+const JWT_SECRET = "BrijalKansara"
+
 
 router.post('/createuser', body('email').isEmail(), body('password',"Password must me more then 5 char").isLength({ min: 5 }), async (req, res)=>{
   // If errors occur return Bad req 
@@ -25,7 +27,6 @@ router.post('/createuser', body('email').isEmail(), body('password',"Password mu
       email: req.body.email,
       password: secPass,
     })
-    const JWT_SECRET = "BrijalKansara"
     const data = {
       user:{
         id: user.id
@@ -33,7 +34,7 @@ router.post('/createuser', body('email').isEmail(), body('password',"Password mu
     }
     const jwtData = jwt.sign(data, JWT_SECRET);
     console.log(jwtData);
-    res.json(user);
+    res.json(jwtData);
   }
     catch(error){
       console.error(error.message);
@@ -42,4 +43,39 @@ router.post('/createuser', body('email').isEmail(), body('password',"Password mu
     // res.json({error: "Please Enter a Unique Value"})
   } )
 
-module.exports = router
+
+// Authenticating at login 
+  router.post('/login', 
+  body('email', "Please Enter Valid email").isEmail(), 
+  body('password',"Password must me more then 5 char").isLength({ min: 5 }), async (req, res)=>{
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    return res.status(400).json({ errors: errors.array() });
+  }
+  const {email, password} = req.body;
+  try {
+    let user = await User.findOne({email});
+    if (!user){
+      return res.status(400).json({error:"Wrong Credentials"})
+    }
+    const passCompair = await bcrypt.compare(password, user.password)
+    if (!passCompair){
+      return res.status(400).json({error:"Wrong Credentials"})
+    }
+       
+    const data = {
+      user:{
+        id: user.id
+      }
+    }
+    const jwtData = jwt.sign(data, JWT_SECRET);
+    console.log(jwtData);
+    res.json(jwtData);
+  } 
+  catch(error){
+    console.error(error.message);
+    res.status(500).send("Something is wrong")
+  }
+  });
+
+module.exports = router;
