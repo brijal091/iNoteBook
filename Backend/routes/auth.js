@@ -3,6 +3,7 @@ const User = require('../models/User');
 const router = express.Router();
 const { body, validationResult } = require('express-validator');
 const bcrypt = require('bcrypt');
+var jwt = require('jsonwebtoken');
 
 router.post('/createuser', body('email').isEmail(), body('password',"Password must me more then 5 char").isLength({ min: 5 }), async (req, res)=>{
   // If errors occur return Bad req 
@@ -24,6 +25,14 @@ router.post('/createuser', body('email').isEmail(), body('password',"Password mu
       email: req.body.email,
       password: secPass,
     })
+    const JWT_SECRET = "BrijalKansara"
+    const data = {
+      user:{
+        id: user.id
+      }
+    }
+    const jwtData = jwt.sign(data, JWT_SECRET);
+    console.log(jwtData);
     res.json(user);
   }
     catch(error){
