@@ -2,6 +2,7 @@ const express = require('express');
 const User = require('../models/User');
 const router = express.Router();
 const { body, validationResult } = require('express-validator');
+const bcrypt = require('bcrypt');
 
 router.post('/createuser', body('email').isEmail(), body('password',"Password must me more then 5 char").isLength({ min: 5 }), async (req, res)=>{
   // If errors occur return Bad req 
@@ -15,10 +16,13 @@ router.post('/createuser', body('email').isEmail(), body('password',"Password mu
     if (user){
       return res.status(400).json({error: "User with this email already exist."})
     } 
+    const salt = await bcrypt.genSalt(10);
+    const secPass = await bcrypt.hash(req.body.password, salt);
+    // Creating new user 
     user = await User.create({
       name: req.body.name,
       email: req.body.email,
-      password: req.body.password,
+      password: secPass,
     })
     res.json(user);
   }
