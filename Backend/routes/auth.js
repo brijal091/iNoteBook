@@ -4,9 +4,10 @@ const router = express.Router();
 const { body, validationResult } = require('express-validator');
 const bcrypt = require('bcrypt');
 var jwt = require('jsonwebtoken');
+var fetchuser = require("../middleware/fetchuser");
 const JWT_SECRET = "BrijalKansara"
 
-
+// Route : 1 Create User
 router.post('/createuser', body('email').isEmail(), body('password',"Password must me more then 5 char").isLength({ min: 5 }), async (req, res)=>{
   // If errors occur return Bad req 
   const errors = validationResult(req);
@@ -44,7 +45,7 @@ router.post('/createuser', body('email').isEmail(), body('password',"Password mu
   } )
 
 
-// Authenticating at login 
+// Route : 2 Authenticating at login 
   router.post('/login', 
   body('email', "Please Enter Valid email").isEmail(), 
   body('password',"Password must me more then 5 char").isLength({ min: 5 }), async (req, res)=>{
@@ -78,4 +79,19 @@ router.post('/createuser', body('email').isEmail(), body('password',"Password mu
   }
   });
 
+  // Route : 3 /get loggedIn User details and Login is required here
+  router.post('/getuser', fetchuser, async (req, res)=>{
+  try {
+    const userId = req.user.id;
+    console.log(userId);
+
+    // To Exclude the passwoed field here in responce we have used -passwoed here at the end 
+    const user = await User.findById(userId).select("-password");
+    // console.log(user)
+    res.send(user)
+  } catch (error) {
+    console.error(error.message);
+    res.status(500).send("Something is wrong")
+  }
+})
 module.exports = router;
