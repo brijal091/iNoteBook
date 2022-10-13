@@ -1,13 +1,24 @@
-import react from "react";
+import react, { useState } from "react";
 import NoteContext from "./noteContext";
 
+// This is our Context API 
 const NoteState = (props) => {
-    const state = {
+    const s1 = {
         "name":"harry",
         "class" : "sb"
     }
+
+    // To Update these values we will use use State 
+    const [state, setState] = useState(s1)
+    const update = () => {
+        setTimeout(() => {
+            setState({"name" : "Brijal", "class" : "A"})
+        }, 5000)
+    }
+
     return (
-        <NoteContext.Provider value = {state}>
+        // Remember the Syntex 
+        <NoteContext.Provider value = {{state, update}}>
             {props.children}
         </NoteContext.Provider>
     )
