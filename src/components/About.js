@@ -1,14 +1,7 @@
-import React, { useEffect } from 'react';
-import { useContext } from 'react';
-import noteContext from '../context/notes/noteContext';
+import React from 'react';
 
 export default function About() {
-  const a = useContext(noteContext)
-
-  useEffect(() => {
-    a.update();
-  },[])
   return (
-    <div>This is {a.state.name}</div>
+    <div>This is page</div>
   )
 }

@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import './App.css';
 import About from './components/About'
 import {
@@ -16,12 +15,14 @@ function App() {
     <NoteState>
       <Router>
         <NavBar></NavBar>
-        <Routes>
-            <Route exact path="/"  element = {<Home/>}/>
-        </Routes>
-        <Routes>
-            <Route exact path="/about"  element = {<About/>}/>
-        </Routes>
+        <div className="container">
+          <Routes>
+              <Route exact path="/"  element = {<Home/>}/>
+          </Routes>
+          <Routes>
+              <Route exact path="/about"  element = {<About/>}/>
+          </Routes>
+          </div>
       </Router>
     </NoteState>
     </>
