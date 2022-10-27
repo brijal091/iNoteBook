@@ -56,7 +56,15 @@ const NoteState = (props) => {
   // Add a note
   const addNote = (title, description, tag) => {
 
-    const note = null;
+    const note = {
+      "_id": "634556ff6b6d01be35d036d6",
+      "user": "633e6db3075059d2199866ab",
+      "title": "New Note",
+      "description": "Make money work for you [Added]",
+      "tag": "Me",
+      "date": "2022-10-11T11:43:59.155Z",
+      "__v": 0
+    };
     // const note = {title, description, tag}
     setNotes(notes.push(note))
   }
@@ -71,8 +79,6 @@ const NoteState = (props) => {
   const editNote = () => {
     
   }
-
-
     return (
         // Remember the Syntex 
         <NoteContext.Provider value = {{notes, addNote, deleteNote, editNote}}>

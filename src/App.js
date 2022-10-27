@@ -16,7 +16,7 @@ function App() {
     <NoteState>
       <Router>
         <NavBar></NavBar>
-        <Alert message = "sucess" />
+        {/* <Alert message = "sucess" /> */}
         <div className="container">
           <Routes>
               <Route exact path="/"  element = {<Home/>}/>
