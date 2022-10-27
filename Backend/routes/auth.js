@@ -85,7 +85,7 @@ router.post('/createuser', body('email').isEmail(), body('password',"Password mu
     const userId = req.user.id;
     console.log(userId);
 
-    // To Exclude the passwoed field here in responce we have used -passwoed here at the end 
+    // To Exclude the password field here in response we have used -password here at the end 
     const user = await User.findById(userId).select("-password");
     // console.log(user)
     res.send(user)

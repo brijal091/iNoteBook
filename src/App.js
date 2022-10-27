@@ -16,12 +16,10 @@ function App() {
     <NoteState>
       <Router>
         <NavBar></NavBar>
-        <Alert message = "sucess" />
+        {/* <Alert message = "success" /> */}
         <div className="container">
           <Routes>
               <Route exact path="/"  element = {<Home/>}/>
-          </Routes>
-          <Routes>
               <Route exact path="/about"  element = {<About/>}/>
           </Routes>
           </div>

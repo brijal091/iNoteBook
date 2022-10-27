@@ -4,9 +4,9 @@ import { Link, useLocation } from "react-router-dom";
 
 export default function NavBar() {
   let location = useLocation();
-  useEffect(() => {
-    console.log(location.pathname);
-  }, [location]);
+  // useEffect(() => {
+  //    console.log(location.pathname);
+  // }, [location]);
   return (
     <>
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
