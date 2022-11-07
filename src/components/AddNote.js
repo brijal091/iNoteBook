@@ -53,6 +53,18 @@ export default function AddNote() {
             id="description"
           />
         </div>
+        <div className="mb-3">
+          <label htmlFor="tag" className="form-label">
+            Tag
+          </label>
+          <input
+            onChange={onChange}
+            type="text"
+            name="tag"
+            className="form-control"
+            id="tag"
+          />
+        </div>
         
         <button type="submit" className="btn btn-primary" onClick={handleClick}>
           Add Note
