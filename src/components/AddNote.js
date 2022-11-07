@@ -3,6 +3,7 @@ import { useContext } from "react";
 import noteContext from "../context/notes/noteContext";
 
 export default function AddNote() {
+
   const context = useContext(noteContext);
   const { addNote } = context;
   const [note, setNote] = useState({
@@ -15,6 +16,7 @@ export default function AddNote() {
     addNote(note);
     addNote(note.title, note.description, note.tag);
     setNote({title: "", description: "", tag: ""})
+
   }
 
 //   Note Here the Syntext is important 
@@ -54,6 +56,7 @@ export default function AddNote() {
         
         <button type="submit" className="btn btn-primary" onClick={handleClick}>
           Add Note
+
         </button>
       </form>
     </div>

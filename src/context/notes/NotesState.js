@@ -41,8 +41,6 @@ const NoteState = (props) => {
     });
     const json = response.json();
 
-
-
     // Logic to add in client side
     console.log("Adding a new node");
     const note = {
@@ -53,6 +51,7 @@ const NoteState = (props) => {
       tag: tag,
       date: "2022-10-11T11:43:59.155Z",
       __v: 0,
+
     };
     // const note = {title, description, tag}
     setNotes(notes.concat(note));
@@ -101,3 +100,4 @@ const NoteState = (props) => {
 };
 
 export default NoteState;
+
