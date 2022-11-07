@@ -9,14 +9,13 @@ export default function AddNote() {
   const [note, setNote] = useState({
     title: "",
     description: "",
-    tag: "defaults"
+    tag: ""
   })
   const handleClick = (e) => {
     e.preventDefault();
     addNote(note);
     addNote(note.title, note.description, note.tag);
     setNote({title: "", description: "", tag: ""})
-
   }
 
 //   Note Here the Syntext is important 
@@ -33,6 +32,7 @@ export default function AddNote() {
           </label>
           <input
             onChange={onChange}
+            value = {note.title}
             type="text"
             className="form-control"
             id="title"
@@ -51,6 +51,7 @@ export default function AddNote() {
             name="description"
             className="form-control"
             id="description"
+            value = {note.description}
           />
         </div>
         <div className="mb-3">
@@ -63,6 +64,8 @@ export default function AddNote() {
             name="tag"
             className="form-control"
             id="tag"
+            value = {note.tag}
+
           />
         </div>
         

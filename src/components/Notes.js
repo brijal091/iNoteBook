@@ -6,7 +6,7 @@ import AddNote from './AddNote';
 
 const Notes = () => {
     const context = useContext(noteContext);
-    const {notes, getNotes} = context;
+    const {notes, getNotes, editNote} = context;
     useEffect(() => {
       getNotes()
        // eslint-disable-next-line
@@ -23,8 +23,8 @@ const Notes = () => {
     const handleClick = (e)=>{ 
       e.preventDefault();
       console.log("Updating the note", note)
-      // editNote(note.id, note.etitle, note.edescription, note.etag)     
-      // refClose.current.click();
+      editNote(note.id, note.etitle, note.edescription, note.etag)     
+      refClose.current.click();
   }
 
   const onChange = (e)=>{
@@ -71,6 +71,7 @@ const Notes = () => {
                 </div>
             </div>
         <h1>Your Notes</h1>
+        {notes.length === 0 && "No Notes to display"}
         {notes.map((note) => {
           return <NotesItem note = {note} key = {note._id} updateNote={updateNote}/>
         })}
