@@ -71,7 +71,7 @@ router.post('/createuser', body('email').isEmail(), body('password',"Password mu
     }
     const jwtData = jwt.sign(data, JWT_SECRET);
     console.log(jwtData);
-    res.json(jwtData);
+    res.json({jwtData});
   } 
   catch(error){
     console.error(error.message);

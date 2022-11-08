@@ -1,4 +1,4 @@
-import React, {useEffect} from "react";
+// import React, {useEffect} from "react";
 import { Link, useLocation } from "react-router-dom";
 
 
@@ -40,17 +40,20 @@ export default function NavBar() {
               </li>
               
             </ul>
-            {/* <form className="d-flex">
-              <input
+            <form className="d-flex">
+              {/* <input
                 className="form-control me-2"
                 type="search"
                 placeholder="Search"
                 aria-label="Search"
-              />
-              <button className="btn btn-outline-success" type="submit">
-                Search
-              </button>
-            </form> */}
+              /> */}
+              <Link to ="/login" className="btn btn-primary mx-2">
+                Login
+              </Link>
+              <Link to ="/signup" className="btn btn-primary mx-2">
+                SignUp
+              </Link>
+            </form>
           </div>
         </div>
       </nav>
