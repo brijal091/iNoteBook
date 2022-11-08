@@ -34,7 +34,7 @@ function Signup() {
             console.log(json)
             console.log(json.jwtData)
             localStorage.setItem('token', json.jwtData)
-            history('/');
+            history('/login');
     }
   }
   return (
