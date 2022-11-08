@@ -33,7 +33,7 @@ export default function Login() {
             console.log(json)
             console.log(json.jwtData)
             localStorage.setItem('token', json.jwtData)
-            history();
+            history('/');
 
         }
     }
@@ -53,9 +53,7 @@ export default function Login() {
             required
 
           />
-          <small id="emailHelp" className="form-text text-muted">
-            We'll never share your email with anyone else.
-          </small>
+          
         </div>
         <div className="form-group">
           <label htmlFor="exampleInputPassword1">Password</label>
