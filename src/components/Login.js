@@ -50,6 +50,8 @@ export default function Login() {
             className="form-control"
             id="exampleInputEmail1"
             aria-describedby="emailHelp"
+            required
+
           />
           <small id="emailHelp" className="form-text text-muted">
             We'll never share your email with anyone else.
@@ -65,6 +67,8 @@ export default function Login() {
             id="exampleInputPassword1"
             autoComplete="false"
             value={credentials.password}
+            required
+
           />
         </div>
         {/* <div className="form-group form-check">

@@ -50,6 +50,8 @@ function Signup() {
             id="exampleInputName"
             placeholder="Enter Your Name"
             onChange={onChange}
+            required
+
           />
           
         </div>
@@ -62,6 +64,8 @@ function Signup() {
             className="form-control"
             placeholder="Enter email"
             name="email"
+            required
+
           />
           
         </div>
@@ -76,6 +80,7 @@ function Signup() {
             placeholder="Password"
             onChange={onChange}
             autoComplete = 'true'
+            required
           />
         </div>
         <button type="submit" className="btn btn-primary my-2">
