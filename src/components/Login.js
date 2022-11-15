@@ -26,6 +26,7 @@ export default function Login() {
         console.log(json)
         if (json.error){
             alert("You have entered wrong credentials")
+            history('/login');
         }
         else{
             // alert("You have login successfully")

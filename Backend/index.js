@@ -11,7 +11,7 @@ app.use(cors())
 // Middle ware 
 app.use(express.json())
 
-// Avaulable Routes
+// Available Routes
 app.use('/api/auth', require('./routes/auth'))
 app.use('/api/notes', require('./routes/notes'))
 

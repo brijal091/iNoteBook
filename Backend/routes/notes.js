@@ -69,7 +69,7 @@ router.delete('/deletenode/:id',fetchuser, async (req, res)=>{
  }
 // Here new: true means that if any new object is added to that note than it will be created 
  note = await Note.findByIdAndDelete(req.params.id)
- res.json({"sucess":"Note has been deleted"})
+ res.json({"success":"Note has been deleted"})
 } )
 
 module.exports = router;
